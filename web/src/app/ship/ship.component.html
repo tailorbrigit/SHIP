@@ -1,0 +1,92 @@
+<!-- /*
+* File: api.service.ts
+* Author: Szabó Brigitta
+* Copyright: 2023, Szabó Brigitta
+* Group: Szoft II/N
+* Date: 2023-04-28
+* Github: https://github.com/tailorbrigit/
+* Licenc: GNU GPL
+*/ -->
+
+<table class="table">
+    <thead class="thead-dark">
+        <th scope="col">Név</th>
+        <th scope="col">Hossz</th>
+        <th scope="col">Ár</th>
+        <th scope="col">Hány személyes</th>
+        <th scope="col">Szállító</th>
+        <br><hr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ship of ships">
+            <td>{{ship.name}}</td>
+            <td>{{ship.length}}</td>
+            <td>{{ship.price}}</td>
+            <td>{{ship.person}}</td>
+            <td>{{ship.trailer}}</td>
+        </tr>
+    </tbody>
+</table>
+
+<button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#operatorModal"> Hozzáad </button>
+
+
+<div class="modal" id="operatorModal" tabindex="-1" 
+    aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="operatorModalLabel">Hajó</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              
+              <form [formGroup]="shipForm">
+
+                  <div class="mt-3">
+                      <label for="name" class="form-label">Név</label>
+                      <input type="text" id="name" class="form-control"
+                      formControlName="name">
+                  </div>
+
+                  <div class="mt-3">
+                      <label for="length" class="form-label">Hossz</label>
+                      <input type="text" id="length" class="form-control"
+                      formControlName="length">
+                  </div>
+
+                  <div class="mt-3">
+                      <label for="price" class="form-label">Ár</label>
+                      <input type="text" id="price" class="form-control"
+                      formControlName="price">
+                  </div>
+
+                  <div class="mt-3">
+                    <label for="person" class="form-label">Emberek</label>
+                    <input type="text" id="person" class="form-control"
+                    formControlName="person">
+                </div>
+
+                <div class="mt-3">
+                    <label for="trailer" class="form-label">Szállító</label>
+                    <input type="text" id="trailer" class="form-control"
+                    formControlName="trailer">
+                </div>
+
+              </form>
+  
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Bezár</button>
+            <button type="button" 
+              class="btn btn-primary"
+              (click)="onClickSaveButton()">
+              Mentés
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
